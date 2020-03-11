@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  terracoind:
+      restart: unless-stopped
+      container_name: btcpayserver_terracoind
+      image: btcpayserver/terracoin:0.12.2.5
+      environment:
+        BITCOIN_EXTRA_ARGS: |
+          ${NBITCOIN_NETWORK:-regtest}=1
+          port=13333
+          rpcport=13332
+          whitelist=0.0.0.0/0
+      expose:
+        - "13332"
+        - "13333"
+      volumes:
+        - "terracoin_datadir:/data"
+  nbxplorer:
+      environment:
+        NBXPLORER_CHAINS: "terracoin"
+        NBXPLORER_TERRACOINRPCURL: http://terracoind:13332/
+        NBXPLORER_TERRACOINNODEENDPOINT: terracoind:13333
+      volumes:
+        - "terracoin_datadir:/root/.terracoincore"
+  btcpayserver:
+      environment:
+        BTCPAY_CHAINS: "terracoin"
+        BTCPAY_TERRACOINEXPLORERURL: http://nbxplorer:32838/
+volumes:
+  terracoin_datadir:

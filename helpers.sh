@@ -18,6 +18,7 @@ install_tooling() {
                 "btcpayserver_trezarcoind" "trezarcoin-cli.sh" "Command line for your Trezar instance" \
                 "btcpayserver_viacoind" "viacoin-cli.sh" "Command line for your Viacoin instance" \
                 "btcpayserver_elementsd" "elements-cli.sh" "Command line for your Elements/Liquid instance" \
+                "btcpayserver_terracoind" "terracoin-cli.sh" "Command line for your Terracoin instance" \
                 "pihole" "pihole.sh" "Command line for running pihole commands" \
                 "*" "btcpay-clean.sh" "Command line for deleting old unused docker images" \
                 "*" "btcpay-down.sh" "Command line for stopping all services related to BTCPay Server" \

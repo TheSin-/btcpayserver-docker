@@ -779,3 +779,19 @@ docker build -f "$DOCKERFILE" -t "romanornr/docker-viacoin:0.15.2" .
 cd - && cd ..
 
 
+# Build terracoin
+# https://raw.githubusercontent.com/btcpayserver/dockerfile-deps/Terracoin/0.12.2.5/Terracoin/0.12.2.5/linuxamd64.Dockerfile
+DOCKERFILE="Terracoin/0.12.2.5/linuxamd64.Dockerfile"
+# https://raw.githubusercontent.com/btcpayserver/dockerfile-deps/Terracoin/0.12.2.5/Terracoin/0.12.2.5/linuxarm32v7.Dockerfile
+[[ "$(uname -m)" == "armv7l" ]] && DOCKERFILE="Terracoin/0.12.2.5/linuxarm32v7.Dockerfile"
+# https://raw.githubusercontent.com/btcpayserver/dockerfile-deps/Terracoin/0.12.2.5/Terracoin/0.12.2.5/linuxarm64v8.Dockerfile
+[[ "$(uname -m)" == "aarch64" ]] && DOCKERFILE="Terracoin/0.12.2.5/linuxarm64v8.Dockerfile"
+echo "Building btcpayserver/terracoin:0.12.2.5"
+git clone https://github.com/btcpayserver/dockerfile-deps terracoin
+cd terracoin
+git checkout Terracoin/0.12.2.5
+cd "$(dirname $DOCKERFILE)"
+docker build -f "$DOCKERFILE" -t "btcpayserver/terracoin:0.12.2.5" .
+cd - && cd ..
+
+

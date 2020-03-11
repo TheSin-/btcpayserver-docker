@@ -82,5 +82,12 @@
     "CLightningFragment": null,
     "LNDFragment": null,
     "EclairFragment": null
+  },
+  {
+    "Crypto": "trc",
+    "CryptoFragment": "terracoin",
+    "CLightningFragment": null,
+    "LNDFragment": null,
+    "EclairFragment": null
   }
 ]
